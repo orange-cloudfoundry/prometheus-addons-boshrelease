@@ -16,15 +16,19 @@ do
 done
 export LD_LIBRARY_PATH
 
+<%- if_p('mongodb.uri') do |uri| %>
+PORT=$(echo <%= uri %>|sed -e "s/^.*@[^:]*:\([0-9]*\).*/\1/")
+<%- end %>
+
 <%- if p('mongodb.tls') == true -%>
 exec chpst -u vcap:vcap env HOME=/home/vcap mongo --ssl \
   --sslCAFile <%= p('mongodb.tls_ca') %> \
   --quiet \
-  "mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1/?authenticationDatabase=admin&ssl=true" \
+  "mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin&ssl=true" \
   < $JOB_DIR/js/create_clustermonitor_user.js
 <%- else -%>
 exec chpst -u vcap:vcap env HOME=/home/vcap mongo \
   --quiet \
-  "mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1/?authenticationDatabase=admin&ssl=true" \
+  "mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin" \
   < $JOB_DIR/js/create_clustermonitor_user.js
 <%- end -%>  
