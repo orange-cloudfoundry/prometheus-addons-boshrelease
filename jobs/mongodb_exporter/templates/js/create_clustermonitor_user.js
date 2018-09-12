@@ -1,4 +1,4 @@
-if (db.system.users.find({ user: <%= p('mongodb.clustermonitor.username') %> }).count() == 0) {
+if (db.system.users.find({ user: "<%= p('mongodb.clustermonitor.username') %>" }).count() == 0) {
     db.createUser({
         user: "<%= p('mongodb.clustermonitor.username') %>",
         pwd: "<%= p('mongodb.clustermonitor.username') %>",
