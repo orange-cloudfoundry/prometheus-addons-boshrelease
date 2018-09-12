@@ -1,5 +1,5 @@
 ---
-name: percona_mongodb_exporter
+name: mongodb_exporter
 
 packages:
   - mongodb_exporter
