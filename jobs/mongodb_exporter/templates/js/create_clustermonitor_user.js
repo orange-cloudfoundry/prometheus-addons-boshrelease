@@ -1,12 +1,12 @@
-if (db.system.users.find({ user: <%= %> }).count() == 0) {
+if (db.system.users.find({ user: <%= p('mongodb.clustermonitor.username') %> }).count() == 0) {
     db.createUser({
-        user: getDeploymentVar("<%= %>"),
-        pwd: getDeploymentVar("<%= %>"),
+        user: "<%= p('mongodb.clustermonitor.username') %>",
+        pwd: "<%= p('mongodb.clustermonitor.username') %>",
         roles: [
             { role: "clusterMonitor", db: "admin" },
         	{ role: "read", db: "local" }
         ]
     });
 } else {
-    db.changeUserPassword(getDeploymentVar("<%= %>"), getDeploymentVar("<%= %>"));
+    db.changeUserPassword("<%= p('mongodb.clustermonitor.username') %>", "<%= p('mongodb.clustermonitor.username') %>");
 }
