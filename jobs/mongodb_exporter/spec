@@ -14,12 +14,6 @@ properties:
     description: "Password for basic auth"
   auth_user:
     description: "Username for basic auth"
-  clustermonitor.user:
-    description: "User used for mongodb exporter"
-  clustermonitor.password:
-    description: "Password used for mongodb exporter" 
-  root.username:
-  root.password:     
   groups_enabled:
     description: "Comma-separated list of groups to use, for more info see: docs.mongodb.org/manual/reference/command/serverStatus/"
   log_backtrace_at:
@@ -27,7 +21,15 @@ properties:
   collect_database:
     description: "Collect MongoDB database metrics"
   mongodb.bin_path:
-    description: "Where mongoDB binaries are on the deployment"  
+    description: "Where mongoDB binaries are on the deployment"
+  mongodb.clustermonitor.username:
+    description: "User used for mongodb exporter"
+  mongodb.clustermonitor.password:
+    description: "Password used for mongodb exporter" 
+  mongodb.root.username:
+    description: ""
+  mongodb.root.password:
+    description: ""  
   mongodb.uri:
     description: "Mongodb URI, format: [mongodb://][user:pass@]host1[:port1][,host2[:port2],...][/database][?options]"
   mongodb.tls:
