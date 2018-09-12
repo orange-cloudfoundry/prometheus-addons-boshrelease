@@ -16,15 +16,15 @@ do
 done
 export LD_LIBRARY_PATH
 
-<%- if p('mongodb.tls') == "true" -%>
+<%- if_p('mongodb.tls') do -%>
 exec chpst -u vcap:vcap env HOME=/home/vcap mongo --ssl \
   --sslCAFile <%= mongodb.tls_ca %> \
   --quiet \
   "mongodb://<%= 'root.username' %>:<%= 'root.password' %>@127.0.0.1/?authenticationDatabase=admin&ssl=true" \
-  < $JOB_DIR/js/create_clustermonitor_user
+  < $JOB_DIR/js/create_clustermonitor_user.js
 <%- else -%>
 exec chpst -u vcap:vcap env HOME=/home/vcap mongo \
   --quiet \
   "mongodb://<%= 'root.username' %>:<%= 'root.password' %>@127.0.0.1/?authenticationDatabase=admin&ssl=true" \
-  < $JOB_DIR/js/create_clustermonitor_user
+  < $JOB_DIR/js/create_clustermonitor_user.js
 <%- end -%>  
