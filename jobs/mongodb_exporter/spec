@@ -24,8 +24,6 @@ properties:
     description: "When logging hits line file:N, emit a stack trace"
   mongodb_exporter.collect_database:
     description: "Collect MongoDB database metrics"
-  mongodb_exporter.collect_oplog:
-    description: "Collect Mongodb Oplog status"
   mongodb_exporter.collect_replset:
     description: "Collect Mongodb replica set status"
   mongodb_exporter.mongodb.uri:
