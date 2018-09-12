@@ -6,48 +6,52 @@ packages:
 
 templates:
   bin/mongodb_exporter_ctl: bin/mongodb_exporter_ctl
-  config/mongodb_tls_cert.pem: config/mongodb_tls_cert.pem
-  config/mongodb_tls_ca.pem: config/mongodb_tls_ca.pem
-  config/mongodb_tls_key.pem: config/mongodb_tls_key.pem
-  config/web_tls_cert.pem: config/web_tls_cert.pem
-  config/web_tls_client_ca.pem: config/web_tls_client_ca.pem
-  config/web_tls_key.pem: config/web_tls_key.pem
+  js/create_clustermonitor_user.js: js/create_clustermonitor_user.js
+  bin/pre-start: bin/pre-start
 
 properties:
-  mongodb_exporter.auth_pass:
+  auth_pass:
     description: "Password for basic auth"
-  mongodb_exporter.auth_user:
+  auth_user:
     description: "Username for basic auth"
-  mongodb_exporter.groups_enabled:
+  clustermonitor.user:
+    description: "User used for mongodb exporter"
+  clustermonitor.password:
+    description: "Password used for mongodb exporter" 
+  root.username:
+  root.password:     
+  groups_enabled:
     description: "Comma-separated list of groups to use, for more info see: docs.mongodb.org/manual/reference/command/serverStatus/"
-  mongodb_exporter.log_backtrace_at:
+  log_backtrace_at:
     description: "When logging hits line file:N, emit a stack trace"
-  mongodb_exporter.collect_database:
+  collect_database:
     description: "Collect MongoDB database metrics"
-  mongodb_exporter.mongodb.uri:
+  mongodb.bin_path:
+    description: "Where mongoDB binaries are on the deployment"  
+  mongodb.uri:
     description: "Mongodb URI, format: [mongodb://][user:pass@]host1[:port1][,host2[:port2],...][/database][?options]"
-  mongodb_exporter.mongodb.tls:
+  mongodb.tls:
     description: "Enable tls connection with mongo server"
-  mongodb_exporter.mongodb.tls_ca:
+  mongodb.tls_ca:
     description: "MongoDB SSL CA (PEM encoded)"
-  mongodb_exporter.mongodb.tls_cert:
+  mongodb.tls_cert:
     description: "MongoDB SSL Certificate (PEM encoded)"
-  mongodb_exporter.mongodb.tls_private_key:
+  mongodb.tls_private_key:
     description: "MongoDB SSL Private Key (PEM encoded)"
-  mongodb_exporter.mongodb.tls_disable_hostname_validation:
+  mongodb.tls_disable_hostname_validation:
     description: "Do hostname validation for server connection"
-  mongodb_exporter.v:
+  v:
     description: "Log level for V logs"
-  mongodb_exporter.vmodule:
+  vmodule:
     description: "Comma-separated list of pattern=N settings for file-filtered logging"
-  mongodb_exporter.web.port:
+  web.port:
     description: "Port on which to expose metrics and web interface"
     default: 9001
-  mongodb_exporter.web.metrics_path:
+  web.metrics_path:
     description: "Path under which to expose metrics"
-  mongodb_exporter.web.tls_cert:
+  web.tls_cert:
     description: "SSL Certificate (PEM encoded)"
-  mongodb_exporter.web.tls_client_ca:
+  web.tls_client_ca:
     description: "SSL Client CA (PEM encoded)"
-  mongodb_exporter.web.tls_private_key:
+  web.tls_private_key:
     description: "SSL Private Key (PEM encoded)"
