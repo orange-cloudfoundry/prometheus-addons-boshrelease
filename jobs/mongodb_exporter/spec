@@ -26,6 +26,8 @@ properties:
     description: "Collect MongoDB database metrics"
   mongodb_exporter.mongodb.uri:
     description: "Mongodb URI, format: [mongodb://][user:pass@]host1[:port1][,host2[:port2],...][/database][?options]"
+  mongodb_exporter.mongodb.tls:
+    description: "Enable tls connection with mongo server"
   mongodb_exporter.mongodb.tls_ca:
     description: "MongoDB SSL CA (PEM encoded)"
   mongodb_exporter.mongodb.tls_cert:
