@@ -33,10 +33,6 @@ case $1 in
       <% if_p('mongodb_exporter.groups_enabled') do |groups_enabled| %> \
       -groups.enabled="<%= groups_enabled %>" \
       <% end %> \
-      <% if_p('mongodb_exporter.log_backtrace_at') do |log_backtrace_at| %> \
-      -log_backtrace_at="<%= log_backtrace_at %>" \
-      <% end %> \
-      -log_dir=${LOG_DIR} \
       <% if_p('mongodb_exporter.collect_database') do |collect_database| %> \
       -mongodb.collect.database="<%= collect_database %>" \
       <% end %> \
