@@ -46,6 +46,9 @@ case $1 in
       <% if_p('mongodb_exporter.collect_replset') do |collect_replset| %> \
       -mongodb.collect.replset="<%= collect_replset %>" \
       <% end %> \
+      <% if_p('mongodb_exporter.mongodb.tls') do %> \
+      -mongodb.tls \
+      <% end %> \
       <% if_p('mongodb_exporter.mongodb.tls_ca') do %> \
       -mongodb.tls-ca="/var/vcap/jobs/mongodb_exporter/config/mongodb_tls_ca.pem" \
       <% end %> \
