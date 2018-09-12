@@ -36,9 +36,6 @@ case $1 in
       <% if_p('mongodb_exporter.collect_database') do |collect_database| %> \
       -mongodb.collect.database="<%= collect_database %>" \
       <% end %> \
-      <% if_p('mongodb_exporter.collect_replset') do |collect_replset| %> \
-      -mongodb.collect.replset="<%= collect_replset %>" \
-      <% end %> \
       <% if_p('mongodb_exporter.mongodb.tls') do %> \
       -mongodb.tls \
       <% end %> \
