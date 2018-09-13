@@ -39,23 +39,38 @@ done
 			&& echo "Cannot connect to mongodb on localhost:${PORT}. Timeout reached" \
 			&& exit 1
 
-
-
 <%- if p('mongodb.tls') == true -%>
-MONGO_CMD="exec chpst -u vcap:vcap env HOME=/home/vcap mongo --ssl \
-  --sslCAFile <%= p('mongodb.tls_ca') %> \
-  --quiet"
-CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin&ssl=true"
+MONGO_CMD="mongo --ssl --sslCAFile <%= p('mongodb.tls_ca') %> --quiet"
+CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/admin?authSource=admin&ssl=true"
 <%- else -%>
-MONGO_CMD="exec chpst -u vcap:vcap env HOME=/home/vcap mongo \
-  --quiet"
-CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin"
+MONGO_CMD="mongo --quiet"
+CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/admin?authSource=admin"
 <%- end -%>  
 
+# wait for root user availability
 
-# Perform user creation on master node only			
+root_initialized="null"
+timeout=120
+while [ ${timeout} -gt 0 ] && [ "${root_initialized}" == "NULL" ]
+do
+    root_initialized=`${MONGO_CMD} ${CONNECT_STRING} \
+    	--eval 'db.getUser(<%= p('mongodb.root.username') %> )' 2>/dev/null \
+    	||echo 1`
+    
+    if [ "${root_initialized}" == "null" ] 
+	then
+		sleep 1
+		timeout=$(($timeout-1))
+	fi
+done
+
+[ ${timeout} -le 0 ] \
+			&& echo "Cannot connect to mongodb on localhost:${PORT} with <%= p('mongodb.root.username') %> user. Timeout reached" >/dev/stderr \
+			&& exit 1
+
+# Perform user creation on master node only
 
 if [ "$(${MONGO_CMD} ${CONNECT_STRING} --eval 'rs.isMaster().ismaster')" == "true" ]
 then
      ${MONGO_CMD} ${CONNECT_STRING} < $JOB_DIR/js/create_clustermonitor_user.js
-fi     
+fi
