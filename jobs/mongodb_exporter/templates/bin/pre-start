@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eux
+set -eu
 
 JOB_DIR=/var/vcap/jobs/mongodb_exporter
 
@@ -49,23 +49,24 @@ CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.
 
 # wait for root user availability
 
-root_initialized="null"
+root_initialized=0
 timeout=120
-while [ ${timeout} -gt 0 ] && [ "${root_initialized}" == "NULL" ]
+set -x
+while [ ${timeout} -gt 0 -a ${root_initialized} -eq 0 ]
 do
     root_initialized=`${MONGO_CMD} ${CONNECT_STRING} \
-    	--eval 'db.getUser(<%= p('mongodb.root.username') %> )' 2>/dev/null \
-    	||echo 1`
+    	--eval 'Mongo()'||echo ""`
     
-    if [ "${root_initialized}" == "null" ] 
+    if [ "$(echo ${root_initialized}|grep 'connection to 127.0.0.1:${PORT}'|wc -l)" -eq 0 ] 
 	then
 		sleep 1
 		timeout=$(($timeout-1))
+		root_initialized=0
 	fi
 done
 
 [ ${timeout} -le 0 ] \
-			&& echo "Cannot connect to mongodb on localhost:${PORT} with <%= p('mongodb.root.username') %> user. Timeout reached" >/dev/stderr \
+			&& echo "Cannot connect to mongodb on localhost:${PORT} with <%= p('mongodb.root.username') %> user. Timeout reached" \
 			&& exit 1
 
 # Perform user creation on master node only
