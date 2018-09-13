@@ -1,4 +1,3 @@
-use admin;
 if (db.system.users.find({ user: "<%= p('mongodb.clustermonitor.username') %>" }).count() == 0) {
     db.createUser({
         user: "<%= p('mongodb.clustermonitor.username') %>",
