@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -eux
 
 JOB_DIR=/var/vcap/jobs/mongodb_exporter
 
@@ -19,16 +19,43 @@ export LD_LIBRARY_PATH
 <%- if_p('mongodb.uri') do |uri| %>
 PORT=$(echo <%= uri %>|sed -e "s/^.*@[^:]*:\([0-9]*\).*/\1/")
 <%- end %>
+# waiting for port availability
+
+timeout=120
+reached=0
+while [ ${timeout} -gt 0 ] && [ ${reached} -ne 1 ]
+do
+	if nc -z 127.0.0.1 "${PORT}"
+	then
+		[ ${reached} -eq 0 ] && reached=1
+	fi
+	if [ ${reached} -eq 0 ]
+	then
+		sleep 1
+		timeout=$(($timeout-1))
+	fi
+done
+[ ${timeout} -le 0 ] \
+			&& echo "Cannot connect to mongodb on localhost:${PORT}. Timeout reached" \
+			&& exit 1
+
+
 
 <%- if p('mongodb.tls') == true -%>
-exec chpst -u vcap:vcap env HOME=/home/vcap mongo --ssl \
+MONGO_CMD="exec chpst -u vcap:vcap env HOME=/home/vcap mongo --ssl \
   --sslCAFile <%= p('mongodb.tls_ca') %> \
-  --quiet \
-  "mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin&ssl=true" \
-  < $JOB_DIR/js/create_clustermonitor_user.js
+  --quiet"
+CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin&ssl=true"
 <%- else -%>
-exec chpst -u vcap:vcap env HOME=/home/vcap mongo \
-  --quiet \
-  "mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin" \
-  < $JOB_DIR/js/create_clustermonitor_user.js
+MONGO_CMD="exec chpst -u vcap:vcap env HOME=/home/vcap mongo \
+  --quiet"
+CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/?authSource=admin"
 <%- end -%>  
+
+
+# Perform user creation on master node only			
+
+if [ "$(${MONGO_CMD} ${CONNECT_STRING} --eval 'rs.isMaster().ismaster')" == "true" ]
+then
+     ${MONGO_CMD} ${CONNECT_STRING} < $JOB_DIR/js/create_clustermonitor_user.js
+fi     
