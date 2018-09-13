@@ -7,7 +7,7 @@ packages:
 templates:
   bin/mongodb_exporter_ctl: bin/mongodb_exporter_ctl
   js/create_clustermonitor_user.js: js/create_clustermonitor_user.js
-  bin/pre-start: bin/pre-start
+  bin/create_clustermonitor_user.sh: bin/create_clustermonitor_user.sh
 
 properties:
   auth_pass:

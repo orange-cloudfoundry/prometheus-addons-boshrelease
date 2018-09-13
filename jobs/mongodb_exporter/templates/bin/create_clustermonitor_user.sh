@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eu
 
-JOB_DIR=/var/vcap/jobs/mongodb_exporter
-
 # Add all packages' /bin & /sbin into $PATH
 for package_bin_dir in $(ls -d /var/vcap/packages/*/bin)
 do

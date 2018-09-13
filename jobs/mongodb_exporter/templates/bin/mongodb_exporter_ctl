@@ -21,6 +21,10 @@ case $1 in
     pid_guard ${PIDFILE} "mongodb_exporter"
     echo $$ > ${PIDFILE}
 
+    # create clustermonitor user
+    export JOB_DIR=/var/vcap/jobs/mongodb_exporter
+    exec ${JOB_DIR}/bin/create_clustermonitor_user.sh
+
     export MONGODB_URL="<%= p('mongodb.uri') %>"
 
     exec mongodb_exporter \
