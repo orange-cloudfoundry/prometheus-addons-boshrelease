@@ -9,6 +9,14 @@ templates:
   js/create_clustermonitor_user.js: js/create_clustermonitor_user.js
   bin/create_clustermonitor_user.sh: bin/create_clustermonitor_user.sh
 
+consumes:
+  - name: exporter
+    type: mongodb_exporter
+    
+provides:
+  - name: exporter
+    type: mongodb_exporter
+
 properties:
   auth_pass:
     description: "Password for basic auth"
