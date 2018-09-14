@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eu
 
+JOB_DIR=/var/vcap/jobs/mongodb_exporter
+
 # Add all packages' /bin & /sbin into $PATH
 for package_bin_dir in $(ls -d /var/vcap/packages/*/bin)
 do
@@ -49,13 +51,12 @@ CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.
 
 root_initialized=0
 timeout=120
-set -x
 while [ ${timeout} -gt 0 -a ${root_initialized} -eq 0 ]
 do
-    root_initialized=`${MONGO_CMD} ${CONNECT_STRING} \
-    	--eval 'Mongo()'||echo ""`
+    root_initialized=1
     
-    if [ "$(echo ${root_initialized}|grep 'connection to 127.0.0.1:${PORT}'|wc -l)" -eq 0 ] 
+    if [ "$(echo $(${MONGO_CMD} ${CONNECT_STRING} \
+    		--eval 'Mongo()'||echo 1)|grep 'connection to 127.0.0.1:'${PORT}|wc -l)" -eq 0 ] 
 	then
 		sleep 1
 		timeout=$(($timeout-1))
@@ -71,5 +72,5 @@ done
 
 if [ "$(${MONGO_CMD} ${CONNECT_STRING} --eval 'rs.isMaster().ismaster')" == "true" ]
 then
-     ${MONGO_CMD} ${CONNECT_STRING} < $JOB_DIR/js/create_clustermonitor_user.js
+     exec ${MONGO_CMD} ${CONNECT_STRING} < $JOB_DIR/js/create_clustermonitor_user.js
 fi
