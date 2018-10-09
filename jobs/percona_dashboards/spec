@@ -1,0 +1,59 @@
+---
+name: percona_dashboards
+
+packages: []
+
+templates:
+  Advanced_Data_Exploration.json: Advanced_Data_Exploration.json
+  Amazon_RDS___Aurora_MySQL__Metrics.json: Amazon_RDS___Aurora_MySQL__Metrics.json
+  Compare_System_Parameters.json: Compare_System_Parameters.json
+  CPU_Utilization_Details_Cores.json: CPU_Utilization_Details_Cores.json
+  Cross_Server_Graphs.json: Cross_Server_Graphs.json
+  Disk_Performance.json: Disk_Performance.json
+  Disk_Space.json: Disk_Space.json
+  Home_Dashboard.json: Home_Dashboard.json
+  MongoDB_Cluster_Summary.json: MongoDB_Cluster_Summary.json
+  MongoDB_InMemory.json: MongoDB_InMemory.json
+  MongoDB_MMAPv1.json: MongoDB_MMAPv1.json
+  MongoDB_Overview.json: MongoDB_Overview.json
+  MongoDB_ReplSet.json: MongoDB_ReplSet.json
+  MongoDB_RocksDB.json: MongoDB_RocksDB.json
+  MongoDB_WiredTiger.json: MongoDB_WiredTiger.json
+  MySQL_Amazon_Aurora_Metrics.json: MySQL_Amazon_Aurora_Metrics.json
+  MySQL_Command_Handler_Counters_Compare.json: MySQL_Command_Handler_Counters_Compare.json
+  MySQL_InnoDB_Compression.json: MySQL_InnoDB_Compression.json
+  MySQL_InnoDB_Metrics_Advanced.json: MySQL_InnoDB_Metrics_Advanced.json
+  MySQL_InnoDB_Metrics.json: MySQL_InnoDB_Metrics.json
+  MySQL_MyISAM_Aria_Metrics.json: MySQL_MyISAM_Aria_Metrics.json
+  MySQL_MyRocks_Metrics.json: MySQL_MyRocks_Metrics.json
+  MySQL_Overview.json: MySQL_Overview.json
+  MySQL_Performance_Schema.json: MySQL_Performance_Schema.json
+  MySQL_Performance_Schema_Wait_Event_Analyses.json: MySQL_Performance_Schema_Wait_Event_Analyses.json
+  MySQL_Query_Response_Time.json: MySQL_Query_Response_Time.json
+  MySQL_Replication.json: MySQL_Replication.json
+  MySQL_Table_Statistics.json: MySQL_Table_Statistics.json
+  MySQL_TokuDB_Metrics.json: MySQL_TokuDB_Metrics.json
+  MySQL_User_Statistics.json: MySQL_User_Statistics.json
+  Network_Overview.json: Network_Overview.json
+  NUMA_Overview.json: NUMA_Overview.json
+  pmm-add-instance.json: pmm-add-instance.json
+  pmm-qan.json: pmm-qan.json
+  pmm-settings.json: pmm-settings.json
+  pmm-summary.json: pmm-summary.json
+  PostgreSQL_Overview.json: PostgreSQL_Overview.json
+  Prometheus_Exporters_Overview.json: Prometheus_Exporters_Overview.json
+  Prometheus_Exporter_Status.json: Prometheus_Exporter_Status.json
+  Prometheus.json: Prometheus.json
+  ProxySQL_Overview.json: ProxySQL_Overview.json
+  PXC_Galera_Cluster_Overview.json: PXC_Galera_Cluster_Overview.json
+  PXC_Galera_Graphs.json: PXC_Galera_Graphs.json
+  Summary_Dashboard.json: Summary_Dashboard.json
+  System_Overview.json: System_Overview.json
+  Trends_Dashboard.json: Trends_Dashboard.json
+
+provides:
+  - name: dashboards
+    type: percona_dashboards
+
+properties: {}
+
