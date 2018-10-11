@@ -1,7 +1,6 @@
 ---
-final_name: percona-mongodb-exporter
+final_name: percona-tools
 blobstore:
-  provider: s3
+  provider: gcs
   options:
-    bucket_name: mongodb-bucket
-    host: https://10.171.41.20/
+    bucket_name: jraverdy-test
