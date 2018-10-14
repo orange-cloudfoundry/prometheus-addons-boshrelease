@@ -1,7 +1,7 @@
 ---
 name: mongodb_exporter
 
-packages:
+packages: 
   - mongodb_exporter
 
 templates:
