@@ -1,7 +1,5 @@
 # percona-tools-boshrelease
 
-**Readme writing in progress**
-
 
 
 ## Features
@@ -26,9 +24,17 @@ The release is actually focused on [mongodb](https://www.mongodb.com), but is st
 
 ## Upload the last release
 
+* get and upload the last release from github
 
+  ```shell
+  wget https://github.com/jraverdy-orange/percona-tools-boshrelease/releases/download/v1.0.0/percona-tools-v1.0.0.tgz
+  
+  bosh upload-release percona-tools-v1.0.0.tgz
+  ```
 
-* get the sources from github
+  
+
+* get the sources from github to recover needed opsfiles
 
   ```shell
   git clone https://github.com/jraverdy-orange/percona-tools-boshrelease.git
