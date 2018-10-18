@@ -1,0 +1,26 @@
+---
+- type: replace
+  path: /releases/name=percona-tools?
+  value:
+    name: percona-tools
+    version: latest
+
+- type: replace   
+  path: /instance_groups/name=mongo/jobs/name=mongodb_exporter?
+  value:
+    name: mongodb_exporter
+    release: percona-tools
+    properties:
+      mongodb:
+        uri: mongodb://((clustermonitor-username)):((mongo_clustermonitor_password))@127.0.0.1:((mongo-port))/?authSource=admin
+        tls: true
+        tls_ca: ((mongo_ca))
+        tls_private_key: ((mongo_key))
+        clustermonitor:
+          username: ((clustermonitor-username))
+          password: ((mongo_clustermonitor_password))
+        root:
+          username: ((mongo_root_password))
+          password: ((mongo_root_password))
+        web:
+          port: 9001

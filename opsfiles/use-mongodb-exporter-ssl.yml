@@ -1,0 +1,13 @@
+---
+- type: replace
+  path: /releases/name=percona-tools?
+  value:
+    name: percona-tools
+    version: latest
+
+- type: replace   
+  path: /instance_groups/name=mongo/jobs/name=mongodb_exporter/properties/mongodb/tls?
+  value:
+    tls: true
+    tls_ca: ((mongo_ca))
+    tls_private_key: ((mongo_key))

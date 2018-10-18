@@ -1,0 +1,17 @@
+- type: replace
+  path: /releases/name=percona-mongodb-exporter?
+  value:
+    name: percona-tools
+    version: latest
+
+- type: replace
+  path: /instance_groups/name=grafana/jobs/name=percona_dashboards?
+  value:
+    name: percona_dashboards
+    release: percona-tools
+
+- type: replace
+  path: /instance_groups/name=grafana/jobs/name=grafana/properties/grafana/prometheus/dashboard_folders/name=MongoDB?
+  value:
+    name: MongoDB
+    files: [ /var/vcap/jobs/percona_dashboards/MongoDB*.json ]      
