@@ -1,8 +1,8 @@
 ---
 - type: replace
-  path: /releases/name=percona-tools?
+  path: /releases/name=prometheus-addons?
   value:
-    name: percona-tools
+    name: prometheus-addons
     version: latest
 
 - type: replace   

@@ -1,5 +1,5 @@
 ---
-final_name: percona-tools
+final_name: prometheus-addons
 blobstore:
   provider: s3
   options:

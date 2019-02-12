@@ -1,15 +1,15 @@
 ---
 - type: replace
-  path: /releases/name=percona-tools?
+  path: /releases/name=prometheus-addons?
   value:
-    name: percona-tools
+    name: prometheus-addons
     version: latest
 
 - type: replace   
   path: /instance_groups/name=mongo/jobs/name=mongodb_exporter?
   value:
     name: mongodb_exporter
-    release: percona-tools
+    release: prometheus-addons
     properties:
       mongodb:
         uri: mongodb://((clustermonitor-username)):((mongo_clustermonitor_password))@127.0.0.1:((mongo-port))/?authSource=admin

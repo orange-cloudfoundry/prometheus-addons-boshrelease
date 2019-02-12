@@ -1,4 +1,4 @@
-# percona-tools-boshrelease
+# prometheus-addons-boshrelease
 
 
 
@@ -27,9 +27,9 @@ The release is actually focused on [mongodb](https://www.mongodb.com), but is st
 * get and upload the last release from github
 
   ```shell
-  wget https://github.com/jraverdy-orange/percona-tools-boshrelease/releases/download/v1.0.0/percona-tools-v1.0.0.tgz
+  wget https://github.com/jraverdy-orange/prometheus-addons-boshrelease/releases/download/v1.0.0/prometheus-addons-v1.0.0.tgz
   
-  bosh upload-release percona-tools-v1.0.0.tgz
+  bosh upload-release prometheus-addons-v1.0.0.tgz
   ```
 
   
@@ -37,7 +37,7 @@ The release is actually focused on [mongodb](https://www.mongodb.com), but is st
 * get the sources from github to recover needed opsfiles
 
   ```shell
-  git clone https://github.com/jraverdy-orange/percona-tools-boshrelease.git
+  git clone https://github.com/jraverdy-orange/prometheus-addons-boshrelease.git
   ```
 
   
@@ -51,7 +51,7 @@ just add the following to the prometheus-boshrelease deployment command:
 ```shell
 bosh deploy ... 
 ...
--o percona-tools-boshrelease/opsfiles/use-percona-dashboards.yml 
+-o prometheus-addons-boshrelease/opsfiles/use-percona-dashboards.yml 
 ```
 
 

@@ -1,6 +1,6 @@
 name: prometheus-addons
 version: 1.0.0
-commit_hash: b641aaf
+commit_hash: 0519f2c
 uncommitted_changes: false
 jobs:
 - name: mongodb_exporter
