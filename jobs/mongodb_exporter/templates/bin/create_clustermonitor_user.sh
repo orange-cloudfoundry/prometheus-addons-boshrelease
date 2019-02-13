@@ -72,7 +72,7 @@ do
     root_initialized=1
     
     if [ "$(echo $(${MONGO_CMD} ${CONNECT_STRING} \
-    		--eval 'Mongo()'||echo 1)|grep 'connection to 127.0.0.1:'${PORT}|wc -l)" -eq 0 ] 
+    		--eval 'Mongo("'127.0.0.1:${PORT}'")'||echo 1)|grep 'connection to 127.0.0.1:'${PORT}|wc -l)" -eq 0 ] 
 	then
 		sleep 1
 		Timeout=$(($Timeout-1))
