@@ -7,7 +7,7 @@ templates:
   MongoDB_Cluster_Summary.json: MongoDB_Cluster_Summary.json
   MongoDB_MMAPv1.json: MongoDB_MMAPv1.json
   MongoDB_Overview.json: MongoDB_Overview.json
-  MongoDB_ReplSet.json: MongoDB_ReplSet.json
+  MongoDB_ReplicaSet.json: MongoDB_ReplicaSet.json
   MongoDB_WiredTiger.json: MongoDB_WiredTiger.json
 
 provides:
