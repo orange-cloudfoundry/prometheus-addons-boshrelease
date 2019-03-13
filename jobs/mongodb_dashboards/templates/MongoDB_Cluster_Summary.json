@@ -2061,7 +2061,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "MongoDB Cluster Summary Bosh",
+  "title": "MongoDB Cluster Summary",
   "uid": "5q69ZL9mk",
-  "version": 18
+  "version": 1
 }

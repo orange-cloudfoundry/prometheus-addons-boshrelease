@@ -2177,7 +2177,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "MongoDB ReplSet Bosh",
+  "title": "MongoDB ReplicaSet",
   "uid": "M7-v4n9mk",
-  "version": 38
+  "version": 1
 }

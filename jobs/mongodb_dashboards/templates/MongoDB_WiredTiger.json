@@ -2208,7 +2208,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "MongoDB WiredTiger Bosh",
+  "title": "MongoDB WiredTiger",
   "uid": "rJ6_3Brik",
-  "version": 4
+  "version": 1
 }
