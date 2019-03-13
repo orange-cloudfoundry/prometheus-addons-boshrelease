@@ -4,15 +4,15 @@
 
 ## Features
 
-This is a bosh release providing the following tools from [percona](https://www.percona.com/)
+This is a bosh release providing the following tools from 
 
-* percona's grafana dashboards (**v1.15.0**)
+* grafana's dashboards
 
-  a set of [Grafana](https://grafana.com/) dashboards for database and system monitoring using Prometheus datasource
+  a set of [Grafana](https://grafana.com/) dashboards for database and system monitoring using Prometheus datasource based on [percona](https://www.percona.com/) dashboard and updated to fit bosh deployment and work without PMM need
 
   *source: https://github.com/percona/grafana-dashboards*
 
-* mongodb_exporter (**v0.6.2**) :
+* mongodb_exporter (**v0.7.0**) :
 
   A MongoDB exporter for [prometheus](https://prometheus.io/)
 
@@ -27,9 +27,9 @@ The release is actually focused on [mongodb](https://www.mongodb.com), but is st
 * get and upload the last release from github
 
   ```shell
-  wget https://github.com/jraverdy-orange/prometheus-addons-boshrelease/releases/download/v1.0.0/prometheus-addons-v1.0.0.tgz
+  wget https://github.com/jraverdy-orange/prometheus-addons-boshrelease/releases/download/v2.0.0/prometheus-addons-v2.0.0.tgz
   
-  bosh upload-release prometheus-addons-v1.0.0.tgz
+  bosh upload-release prometheus-addons-v2.0.0.tgz
   ```
 
   
@@ -51,7 +51,7 @@ just add the following to the prometheus-boshrelease deployment command:
 ```shell
 bosh deploy ... 
 ...
--o prometheus-addons-boshrelease/opsfiles/use-percona-dashboards.yml 
+-o prometheus-addons-boshrelease/opsfiles/use-mongodb-dashboards.yml 
 ```
 
 
