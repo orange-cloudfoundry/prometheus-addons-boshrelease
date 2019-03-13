@@ -25,9 +25,10 @@ case $1 in
     JOB_DIR=/var/vcap/jobs/mongodb_exporter
     source ${JOB_DIR}/bin/create_clustermonitor_user.sh
 
-    export MONGODB_URL="<%= p('mongodb.uri') %>"
+    # export MONGODB_URL="<%= p('mongodb.uri') %>"
 
     exec mongodb_exporter \
+      --mongodb.uri="<%= p('mongodb.uri') %>" \
       <% if_p('groups_enabled') do |groups_enabled| %> \
       --groups.enabled="<%= groups_enabled %>" \
       <% end %> \
