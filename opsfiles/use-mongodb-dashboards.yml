@@ -5,9 +5,9 @@
     version: latest
 
 - type: replace
-  path: /instance_groups/name=grafana/jobs/name=percona_dashboards?
+  path: /instance_groups/name=grafana/jobs/name=mongodb_dashboards?
   value:
-    name: percona_dashboards
+    name: mongodb_dashboards
     release: prometheus-addons
 
 - type: replace
