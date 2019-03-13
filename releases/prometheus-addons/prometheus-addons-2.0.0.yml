@@ -1,16 +1,16 @@
 name: prometheus-addons
 version: 2.0.0
-commit_hash: d30e320
-uncommitted_changes: false
+commit_hash: 8fa4560
+uncommitted_changes: true
 jobs:
 - name: mongodb_dashboards
   version: 498f1243899a7acda9bcfc082e430a37f1516b7c
   fingerprint: 498f1243899a7acda9bcfc082e430a37f1516b7c
   sha1: 556efff54255be8b258eab4c670699e5d3588f8b
 - name: mongodb_exporter
-  version: 20a6014942cc991b0ee11d94f5ce2764f68bd33f
-  fingerprint: 20a6014942cc991b0ee11d94f5ce2764f68bd33f
-  sha1: e595f4af1fc4f2722aeadc392ee46a8a66af4c6d
+  version: f77452abdc321056518c6e7c2b83f0b2d0b5f796
+  fingerprint: f77452abdc321056518c6e7c2b83f0b2d0b5f796
+  sha1: d9fa2961a62473790bb9ba6d133b9eed011e659e
 packages:
 - name: mongodb_exporter
   version: 4ad08fce0b4dca98a543625dfcc187874e0bb9f0
