@@ -3,4 +3,4 @@ name: mongodb_exporter
 
 files:
   - common/utils.sh
-  - percona-mongodb-exporter/percona-mongodb-exporter-0.6.2.tar.gz
+  - percona-mongodb-exporter/percona-mongodb-exporter-*.tar.gz

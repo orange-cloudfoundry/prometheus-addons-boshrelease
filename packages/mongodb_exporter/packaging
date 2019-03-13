@@ -8,4 +8,5 @@ cp -a ${BOSH_COMPILE_TARGET}/common/* ${BOSH_INSTALL_TARGET}/common
 
 # Extract mongodb_exporter package
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
-tar xzvf ${BOSH_COMPILE_TARGET}/percona-mongodb-exporter/percona-mongodb-exporter-0.6.2.tar.gz -C ${BOSH_INSTALL_TARGET}/bin
+ls  ${BOSH_COMPILE_TARGET}/percona-mongodb-exporter/percona-mongodb-exporter-*.tar.gz | \
+xargs -i tar xzf {} -C ${BOSH_INSTALL_TARGET}/bin mongodb_exporter
