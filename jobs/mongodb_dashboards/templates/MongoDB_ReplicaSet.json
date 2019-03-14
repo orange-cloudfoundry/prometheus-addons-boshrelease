@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 70,
-  "iteration": 1552409803681,
+  "id": 28,
+  "iteration": 1552559130421,
   "links": [
     {
       "asDropdown": true,
@@ -1937,7 +1937,7 @@
       }
     }
   ],
-  "refresh": "1m",
+  "refresh": false,
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
@@ -2011,8 +2011,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "mongosapin",
-          "value": "mongosapin"
+          "selected": false,
+          "text": "mongolgoth17",
+          "value": "mongolgoth17"
         },
         "datasource": "prometheus",
         "definition": "label_values(bosh_job_healthy{bosh_job_name=~\"mongod|shard.*|cfgsvr\"}, bosh_deployment)",
@@ -2064,8 +2065,8 @@
         "allFormat": "glob",
         "allValue": null,
         "current": {
-          "text": "10.244.0.154",
-          "value": "10.244.0.154"
+          "text": "10.244.0.172",
+          "value": "10.244.0.172"
         },
         "datasource": "prometheus",
         "definition": "query_result(sort_desc(bosh_job_healthy{bosh_deployment=~\"$deployment\"}) * on (bosh_job_ip) group_left(set) max by (set,bosh_job_ip) (label_replace(mongodb_mongod_replset_my_state{},\"bosh_job_ip\",\"$1\",\"instance\",\"(^.*):.*\")))",
@@ -2090,8 +2091,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.244.0.154:9001",
-          "value": "10.244.0.154:9001"
+          "text": "10.244.0.172:9001",
+          "value": "10.244.0.172:9001"
         },
         "datasource": "prometheus",
         "definition": "label_values(mongodb_mongod_replset_my_state{set=\"$replset\",instance=~\"$instance:.*\"},instance)",
@@ -2102,7 +2103,7 @@
         "name": "host",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "10.244.0.154:9001",
             "value": "10.244.0.154:9001"
           }
@@ -2146,8 +2147,8 @@
     ]
   },
   "time": {
-    "from": "now-12h",
-    "to": "now"
+    "from": "2019-03-14T08:49:27.265Z",
+    "to": "2019-03-14T08:57:23.153Z"
   },
   "timepicker": {
     "hidden": false,

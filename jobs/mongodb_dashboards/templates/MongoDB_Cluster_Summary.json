@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 81,
-  "iteration": 1552408600647,
+  "id": 68,
+  "iteration": 1552557610965,
   "links": [
     {
       "asDropdown": true,
@@ -670,7 +670,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg((rate(mongodb_mongos_op_counters_total{type!=\"command\"}[$interval]) or irate(mongodb_mongos_op_counters_total{type!=\"command\"}[5m])) * on (instance)  group_left \n label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(^.*)\")) by (type)\n",
+          "expr": "avg((rate(mongodb_mongod_op_counters_total{type!=\"command\"}[$interval]) or irate(mongodb_mongod_op_counters_total{type!=\"command\"}[5m])) * on (instance)  group_left \n label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(^.*)\")) by (type)\n",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -762,7 +762,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bosh_job_healthy{bosh_deployment=~\"$deployment\"} * on (bosh_job_ip) group_left(set) max by (set,bosh_job_ip) (label_replace(mongodb_mongos_connections{state=\"current\"},\"bosh_job_ip\",\"$1\",\"instance\",\"(^.*):.*\")))",
+          "expr": "sum(bosh_job_healthy{bosh_deployment=~\"$deployment\"} * on (bosh_job_ip) group_left(set) max by (set,bosh_job_ip) (label_replace(mongodb_connections{state=\"current\"},\"bosh_job_ip\",\"$1\",\"instance\",\"(^.*):.*\")))",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -1397,7 +1397,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(mongodb_mongod_connections{state=\"current\"} * on (instance) (label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(.*)\")) * on (instance) group_left(set) (mongodb_mongod_replset_my_state * on (instance) group_right(set) max by (set,instance) (label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(^.*)\")))/(mongodb_mongod_replset_my_state * on (instance) group_right(set) max by (set,instance) (label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(^.*)\"))))by (set)",
+          "expr": "sum(mongodb_connections{state=\"current\"} * on (instance) (label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(.*)\")) * on (instance) group_left(set) (mongodb_mongod_replset_my_state * on (instance) group_right(set) max by (set,instance) (label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(^.*)\")))/(mongodb_mongod_replset_my_state * on (instance) group_right(set) max by (set,instance) (label_replace(bosh_job_healthy{bosh_deployment=\"$deployment\"},\"instance\",\"$1:9001\",\"bosh_job_ip\",\"(^.*)\"))))by (set)",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -2062,6 +2062,6 @@
   },
   "timezone": "browser",
   "title": "MongoDB Cluster Summary",
-  "uid": "5q69ZL9mk",
-  "version": 1
+  "uid": "EMCdXqjmk",
+  "version": 2
 }

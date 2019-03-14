@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 92,
-  "iteration": 1552409634086,
+  "id": 70,
+  "iteration": 1552558166083,
   "links": [
     {
       "asDropdown": true,
@@ -85,7 +85,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_mongod_op_counters_total{instance=\"$host\", type!=\"command\"}[$interval]) or \nirate(mongodb_mongod_op_counters_total{instance=\"$host\", type!=\"command\"}[5m]) or \nrate(mongodb_mongos_op_counters_total{instance=\"$host\", type!=\"command\"}[$interval]) or \nirate(mongodb_mongos_op_counters_total{instance=\"$host\", type!=\"command\"}[5m])",
+          "expr": "rate(mongodb_mongod_op_counters_total{instance=\"$host\", type!=\"command\"}[$interval]) or \nirate(mongodb_mongod_op_counters_total{instance=\"$host\", type!=\"command\"}[5m]) ",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -95,7 +95,7 @@
           "step": 300
         },
         {
-          "expr": "rate(mongodb_mongod_op_counters_repl_total{instance=\"$host\", type!~\"(command|query|getmore)\"}[$interval]) or \nirate(mongodb_mongod_op_counters_repl_total{instance=\"$host\", type!~\"(command|query|getmore)\"}[5m]) or\nrate(mongodb_mongos_op_counters_repl_total{instance=\"$host\", type!~\"(command|query|getmore)\"}[$interval]) or \nirate(mongodb_mongos_op_counters_repl_total{instance=\"$host\", type!~\"(command|query|getmore)\"}[5m])",
+          "expr": "rate(mongodb_mongod_op_counters_repl_total{instance=\"$host\", type!~\"(command|query|getmore)\"}[$interval]) or \nirate(mongodb_mongod_op_counters_repl_total{instance=\"$host\", type!~\"(command|query|getmore)\"}[5m])",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -105,7 +105,7 @@
           "step": 300
         },
         {
-          "expr": "rate(mongodb_mongod_metrics_ttl_deleted_documents_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_mongod_metrics_ttl_deleted_documents_total{instance=\"$host\"}[5m]) or\nrate(mongodb_mongos_metrics_ttl_deleted_documents_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_mongos_metrics_ttl_deleted_documents_total{instance=\"$host\"}[5m])",
+          "expr": "rate(mongodb_mongod_metrics_ttl_deleted_documents_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_mongod_metrics_ttl_deleted_documents_total{instance=\"$host\"}[5m])",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -214,7 +214,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mongodb_mongod_connections{instance=\"$host\", state=\"current\"} or\nmongodb_mongos_connections{instance=\"$host\", state=\"current\"}",
+          "expr": "mongodb_connections{instance=\"$host\", state=\"current\"}",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -1111,7 +1111,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_mongod_asserts_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_mongod_asserts_total{instance=\"$host\"}[5m]) or\nrate(mongodb_mongos_asserts_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_mongos_asserts_total{instance=\"$host\"}[5m])",
+          "expr": "rate(mongodb_asserts_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_asserts_total{instance=\"$host\"}[5m])",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -1219,7 +1219,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_mongod_extra_info_page_faults_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_mongod_extra_info_page_faults_total{instance=\"$host\"}[5m]) or\nrate(mongodb_mongos_extra_info_page_faults_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_mongos_extra_info_page_faults_total{instance=\"$host\"}[5m])",
+          "expr": "rate(mongodb_extra_info_page_faults_total{instance=\"$host\"}[$interval]) or \nirate(mongodb_extra_info_page_faults_total{instance=\"$host\"}[5m])",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -1351,8 +1351,6 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "tags": [],
           "text": "mongolgoth17",
           "value": "mongolgoth17"
         },
@@ -1379,8 +1377,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "10.244.0.171",
-          "value": "10.244.0.171"
+          "text": "10.244.0.172",
+          "value": "10.244.0.172"
         },
         "datasource": "prometheus",
         "definition": "query_result(sort_desc(bosh_job_healthy{bosh_deployment=~\"$deployment\"}) * on (bosh_job_ip) group_left(set) max by (set,bosh_job_ip) (label_replace(mongodb_mongod_replset_my_state{},\"bosh_job_ip\",\"$1\",\"instance\",\"(^.*):.*\")))",
@@ -1404,8 +1402,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.244.0.171:9001",
-          "value": "10.244.0.171:9001"
+          "text": "10.244.0.172:9001",
+          "value": "10.244.0.172:9001"
         },
         "datasource": "prometheus",
         "definition": "label_values(mongodb_mongod_replset_my_state{instance=~\"$instance:.*\"},instance)",
@@ -1461,6 +1459,6 @@
   },
   "timezone": "browser",
   "title": "MongoDB Overview",
-  "uid": "vB8Kjs9iz",
-  "version": 1
+  "uid": "gGM2rqCmk",
+  "version": 2
 }

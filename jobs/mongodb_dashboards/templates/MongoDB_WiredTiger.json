@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 91,
-  "iteration": 1552409873072,
+  "id": 71,
+  "iteration": 1552559171127,
   "links": [
     {
       "asDropdown": true,
@@ -465,7 +465,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "node_memory_Cached{instance=\"$host\"}",
+          "expr": "node_memory_Cached_bytes{instance=\"$instance:9100\"}",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 1,
@@ -1846,7 +1846,8 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_mongod_extra_info_page_faults_total{instance=\"$host\"}[$interval]) or irate(mongodb_mongod_extra_info_page_faults_total{instance=\"$host\"}[5m])",
+          "expr": "rate(mongodb_extra_info_page_faults_total{instance=\"$host\"}[$interval]) or irate(mongodb_extra_info_page_faults_total{instance=\"$host\"}[5m])",
+          "format": "time_series",
           "hide": false,
           "interval": "$interval",
           "intervalFactor": 1,
@@ -2001,7 +2002,7 @@
       }
     }
   ],
-  "refresh": "1m",
+  "refresh": false,
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
@@ -2177,8 +2178,8 @@
     ]
   },
   "time": {
-    "from": "now-12h",
-    "to": "now"
+    "from": "2019-03-14T08:49:27.265Z",
+    "to": "2019-03-14T08:57:23.153Z"
   },
   "timepicker": {
     "hidden": false,
@@ -2209,6 +2210,6 @@
   },
   "timezone": "browser",
   "title": "MongoDB WiredTiger",
-  "uid": "rJ6_3Brik",
-  "version": 1
+  "uid": "LAmE93Cik",
+  "version": 3
 }

@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 89,
-  "iteration": 1552408929594,
+  "id": 69,
+  "iteration": 1552558147466,
   "links": [
     {
       "asDropdown": true,
@@ -205,7 +205,7 @@
     },
     {
       "cacheTimeout": null,
-      "colorBackground": true,
+      "colorBackground": false,
       "colorValue": false,
       "colors": [
         "rgba(245, 54, 54, 0.9)",
@@ -220,7 +220,7 @@
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
-        "show": true,
+        "show": false,
         "thresholdLabels": false,
         "thresholdMarkers": true
       },
@@ -268,7 +268,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "node_memory_Cached{instance=\"$host\"}",
+          "expr": "node_memory_Cached_bytes{instance=\"$instance:9100\"}",
           "format": "time_series",
           "interval": "5m",
           "intervalFactor": 1,
@@ -470,17 +470,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(sum(increase(mongodb_mongod_locks_time_locked_global_microseconds_total{instance=\"$host\",database=\"Database\"}[$interval])) by (instance) / (increase(mongodb_mongod_instance_uptime_seconds{instance=\"$host\"}[$interval])*1000000)) or mongodb_mongod_global_lock_ratio{instance=\"$host\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "Lock (pre-3.2 only)",
-          "metric": "mongodb_mongod_global_lock_ratio",
-          "refId": "J",
-          "step": 300
-        },
-        {
           "expr": "(sum(increase(mongodb_mongod_locks_time_acquiring_global_microseconds_total{instance=\"$host\",database=\"Database\"}[$interval])) by (instance) / (increase(mongodb_mongod_instance_uptime_seconds{instance=\"$host\"}[$interval])*1000000)) or mongodb_mongod_global_lock_ratio{instance=\"$host\"}",
           "format": "time_series",
           "hide": false,
@@ -670,7 +659,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(mongodb_mongod_extra_info_page_faults_total{instance=\"$host\"}[$interval]) or irate(mongodb_mongod_extra_info_page_faults_total{instance=\"$host\"}[5m])",
+          "expr": "rate(mongodb_extra_info_page_faults_total{instance=\"$host\"}[$interval]) or irate(mongodb_extra_info_page_faults_total{instance=\"$host\"}[5m])",
           "format": "time_series",
           "hide": false,
           "interval": "$interval",
@@ -1844,8 +1833,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "sh0",
-          "value": "sh0"
+          "tags": [],
+          "text": "sh1",
+          "value": "sh1"
         },
         "datasource": "prometheus",
         "definition": "query_result(sort(bosh_job_healthy{bosh_deployment=\"$deployment\"}) * on (bosh_job_ip) group_left(set) max by (set,bosh_job_ip) (label_replace(mongodb_mongod_replset_my_state{},\"bosh_job_ip\",\"$1\",\"instance\",\"(^.*):.*\")))",
@@ -1880,8 +1870,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.244.0.169",
-          "value": "10.244.0.169"
+          "text": "10.244.0.174",
+          "value": "10.244.0.174"
         },
         "datasource": "prometheus",
         "definition": "query_result(sort_desc(bosh_job_healthy{bosh_deployment=~\"$deployment\"} * on (bosh_job_ip) group_left(engine,set) max by (engine,set,bosh_job_ip) (label_replace(mongodb_mongod_storage_engine{engine=\"mmapv1\"},\"bosh_job_ip\",\"$1\",\"instance\",\"(^.*):.*\") * on (bosh_job_ip) group_left(set) max by (set,bosh_job_ip) (label_replace(mongodb_mongod_replset_my_state{},\"bosh_job_ip\",\"$1\",\"instance\",\"(^.*):.*\")))))",
@@ -1905,8 +1895,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.244.0.169:9001",
-          "value": "10.244.0.169:9001"
+          "text": "10.244.0.174:9001",
+          "value": "10.244.0.174:9001"
         },
         "datasource": "prometheus",
         "definition": "label_values(mongodb_mongod_replset_my_state{set=\"$replset\",instance=~\"$instance:.*\"},instance)",
@@ -1962,6 +1952,6 @@
   },
   "timezone": "browser",
   "title": "MongoDB MMAPv1",
-  "uid": "Cok9wMHil",
-  "version": 1
+  "uid": "Vaizr3Cmk",
+  "version": 2
 }
