@@ -1,0 +1,11 @@
+ALERT MongoExporterReplsetHealthError
+  IF min(mongodb_replset_member_health) by(instance) != 1
+  FOR <%= p('mongodb_alerts.scrape_error.evaluation_time') %>
+  LABELS {
+    service = "mongodb-exporter",
+    severity = "critical",
+  }
+  ANNOTATIONS {
+    summary = "mongodb_exporter `{{$labels.instance}}` Replset error",
+    description = "The `mongodb_exporter` at `{{$labels.instance}}` is not available",
+  }

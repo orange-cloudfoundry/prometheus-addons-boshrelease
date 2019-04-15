@@ -1,0 +1,27 @@
+name: prometheus-addons
+version: 2.1.0
+commit_hash: 3a5a432
+uncommitted_changes: false
+jobs:
+- name: mongodb_alerts
+  version: 2891ece410fb02cefbc47459f544138888627590
+  fingerprint: 2891ece410fb02cefbc47459f544138888627590
+  sha1: b6e9f93b23922ad830ba415c282a63ed5d55302f
+- name: mongodb_dashboards
+  version: c52f8f31a7f28cff2ddda573a576b6b92c558995
+  fingerprint: c52f8f31a7f28cff2ddda573a576b6b92c558995
+  sha1: b856cfea6ccaa2aeb0ee0a38764ea32191c585c5
+- name: mongodb_exporter
+  version: f77452abdc321056518c6e7c2b83f0b2d0b5f796
+  fingerprint: f77452abdc321056518c6e7c2b83f0b2d0b5f796
+  sha1: d9fa2961a62473790bb9ba6d133b9eed011e659e
+packages:
+- name: mongodb_exporter
+  version: 4ad08fce0b4dca98a543625dfcc187874e0bb9f0
+  fingerprint: 4ad08fce0b4dca98a543625dfcc187874e0bb9f0
+  sha1: 6d69864d65c768cb3563bc2b6b84c850837cb46c
+  dependencies: []
+license:
+  version: 0fbc9511a7e7f3a4d2f1af47f5ed327237b5f06c
+  fingerprint: 0fbc9511a7e7f3a4d2f1af47f5ed327237b5f06c
+  sha1: 4a5528296ee8a5f0b1faa273fce892d864456efa

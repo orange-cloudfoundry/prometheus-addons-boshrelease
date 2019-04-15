@@ -1,0 +1,12 @@
+groups:
+- name: mongodb
+  rules:
+  - alert: MongoExporterReplsetHealthError
+    expr: min by(instance) (mongodb_replset_member_health) != 1
+    for: 10m
+    labels:
+      service: mongodb-exporter
+      severity: critical
+    annotations:
+      description: The `mongodb_exporter` at `{{$labels.instance}}` is not available
+      summary: mongodb_exporter `{{$labels.instance}}` Replset error
