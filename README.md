@@ -18,6 +18,12 @@ This is a bosh release providing the following tools from
 
   *source: https://github.com/percona/mongodb_exporter.git*
 
+* Alertmanager alerts files 
+
+  *source: https://github.com/orange-cloudfoundry/mongodb_prometheus-dashboards_alerts-boshrelease*
+
+  * **Note that alerting is actually only related to replicaset deployment and does not warn on any sharding specific metric**
+
 The release is actually focused on [mongodb](https://www.mongodb.com), but is still subject to evolve if there is any need. 
 
 
@@ -27,14 +33,14 @@ The release is actually focused on [mongodb](https://www.mongodb.com), but is st
 * get and upload the last release from github
 
   ```shell
-  wget https://github.com/jraverdy-orange/prometheus-addons-boshrelease/releases/download/v2.0.0/prometheus-addons-v2.0.0.tgz
+  wget https://github.com/jraverdy-orange/prometheus-addons-boshrelease/releases/download/v2.1.1/prometheus-addons-v2.1.1.tgz
   
-  bosh upload-release prometheus-addons-v2.0.0.tgz
+  bosh upload-release prometheus-addons-v2.1.1.tgz
   ```
 
   
 
-* get the sources from github to recover needed opsfiles
+* get the sources from github to recover needed opsfiles, which are necessary on both prometheus and mongodb deployments
 
   ```shell
   git clone https://github.com/jraverdy-orange/prometheus-addons-boshrelease.git
@@ -42,7 +48,7 @@ The release is actually focused on [mongodb](https://www.mongodb.com), but is st
 
   
 
-## Adding the dashboards to prometheus
+## Adding the dashboards and alerts to grafana and alertmanager
 
 The release provides the needed opsfile to include the attached dashboards
 
@@ -51,7 +57,7 @@ just add the following to the prometheus-boshrelease deployment command:
 ```shell
 bosh deploy ... 
 ...
--o prometheus-addons-boshrelease/opsfiles/use-mongodb-dashboards.yml 
+-o prometheus-addons-boshrelease/opsfiles/use-mongodb-dashboards-alerts.yml 
 ```
 
 
