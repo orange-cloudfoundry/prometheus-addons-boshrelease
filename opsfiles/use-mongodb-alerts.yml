@@ -1,0 +1,10 @@
+- type: replace
+  path: /releases/name=percona-mongodb-exporter?
+  value:
+    name: prometheus-addons
+    version: latest
+
+- type: replace
+  path: /instance_groups/name=prometheus2/jobs/name=prometheus2/properties/prometheus/rule_files/-
+  value: /var/vcap/jobs/mongodb_alerts/*.alerts.yml
+
