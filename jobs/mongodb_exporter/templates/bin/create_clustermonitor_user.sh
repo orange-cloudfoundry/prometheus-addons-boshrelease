@@ -55,11 +55,16 @@ done
 			&& echo "Cannot connect to mongodb on localhost:${PORT}. Timeout reached" \
 			&& exit 1
 
+MONGO_CMD="mongo"
+<% if_p('mongodb.bin_path') do |bin_path| %>
+MONGO_CMD="<% bin_path %>/mongo"
+<%- end %>
+
 <%- if p('mongodb.tls') == true -%>
-MONGO_CMD="mongo --ssl --sslCAFile <%= p('mongodb.tls_ca') %> --quiet"
+MONGO_CMD="$MONGO_CMD --ssl --sslCAFile <%= p('mongodb.tls_ca') %> --quiet"
 CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/admin?authSource=admin&ssl=true"
 <%- else -%>
-MONGO_CMD="mongo --quiet"
+MONGO_CMD="$MONGO_CMD --quiet"
 CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/admin?authSource=admin"
 <%- end -%>  
 
