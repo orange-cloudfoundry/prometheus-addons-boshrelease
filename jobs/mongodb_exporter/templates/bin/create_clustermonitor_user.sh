@@ -57,7 +57,7 @@ done
 
 MONGO_CMD="mongo"
 <% if_p('mongodb.bin_path') do |bin_path| %>
-MONGO_CMD="<% bin_path %>/mongo"
+MONGO_CMD="<%= bin_path %>/mongo"
 <%- end %>
 
 <%- if p('mongodb.tls') == true -%>
