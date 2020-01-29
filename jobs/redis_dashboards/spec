@@ -1,0 +1,9 @@
+---
+name: redis_dashboards
+
+templates:
+  Redis-dashboard-overview.json: Redis-dashboard-overview.json
+
+packages: []
+
+properties: {}
