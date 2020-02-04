@@ -1,0 +1,17 @@
+- type: replace
+  path: /releases/name=prometheus-addons?
+  value:
+    name: prometheus-addons
+    version: latest
+
+- type: replace
+  path: /instance_groups/name=grafana/jobs/name=mysql_dashboards?
+  value:
+    name: mysql_dashboards
+    release: prometheus-addons
+
+- type: replace
+  path: /instance_groups/name=grafana/jobs/name=grafana/properties/grafana/prometheus/dashboard_folders/name=MySQL?
+  value:
+    name: MySQL
+    files: [ /var/vcap/jobs/mysql_dashboards/*.json ]      
