@@ -1,0 +1,11 @@
+---
+name: arbbitmq_dashboards
+
+packages: []
+
+templates:
+  rabbitmq_overview.json: rabbitmq_overview.json
+  rabbitmq_exchanges.json: rabbitmq_exchanges.json
+  rabbitmq_queues.json: rabbitmq_queues.json
+
+properties: {}
