@@ -1,0 +1,69 @@
+name: prometheus-addons
+version: 3.1.0
+commit_hash: 26f272b
+uncommitted_changes: false
+jobs:
+- name: mongodb_alerts
+  version: 2891ece410fb02cefbc47459f544138888627590
+  fingerprint: 2891ece410fb02cefbc47459f544138888627590
+  sha1: b6e9f93b23922ad830ba415c282a63ed5d55302f
+- name: mongodb_dashboards
+  version: c52f8f31a7f28cff2ddda573a576b6b92c558995
+  fingerprint: c52f8f31a7f28cff2ddda573a576b6b92c558995
+  sha1: b856cfea6ccaa2aeb0ee0a38764ea32191c585c5
+- name: mongodb_exporter
+  version: db51d5e92e818bf98be606df341f31375e49e216
+  fingerprint: db51d5e92e818bf98be606df341f31375e49e216
+  sha1: 2ba11efd91decaf3244c9713ce5307df884d3729
+- name: mysql_dashboards
+  version: 9409a3eb06c9cb3a1269d8cda6f2ff2de94846fa
+  fingerprint: 9409a3eb06c9cb3a1269d8cda6f2ff2de94846fa
+  sha1: fcc66660cb717b27dbf36cdc04fbd5af7396ac1e
+- name: rabbitmq_dashboards
+  version: f1423b7a415c7cee747f7b8d11e1d59c820d1dd5
+  fingerprint: f1423b7a415c7cee747f7b8d11e1d59c820d1dd5
+  sha1: 87f18abed9730a1337c27f86eb431fbd3880267a
+- name: redis_alerts
+  version: 4552a79775c064637b37c9bd9411b44c3e0af789
+  fingerprint: 4552a79775c064637b37c9bd9411b44c3e0af789
+  sha1: f5a815129d60f3b404d4e0d17552825f87d383d6
+- name: redis_dashboards
+  version: 8b4aae5c0b53d9ea054ab60b6b770a6c0669bc79
+  fingerprint: 8b4aae5c0b53d9ea054ab60b6b770a6c0669bc79
+  sha1: aa93e24a472692e5b050231145ccae7f145d786b
+- name: redis_exporter
+  version: eba41e78662baaa631a89fec879d04d00158f1a6
+  fingerprint: eba41e78662baaa631a89fec879d04d00158f1a6
+  sha1: de83f2367ef697a3251579b2f25a5afa64bde532
+- name: redis_sentinel_alerts
+  version: 91a6763ed7958e79ba52be907a1f4b317e130e1a
+  fingerprint: 91a6763ed7958e79ba52be907a1f4b317e130e1a
+  sha1: 01058c2b483803010d8fc4de99b372e7d2fabcf6
+- name: redis_sentinel_dashboards
+  version: b105df454810d0836291ef403711b12cc68d2c1b
+  fingerprint: b105df454810d0836291ef403711b12cc68d2c1b
+  sha1: d8afd5fd1076f68cff38aadbfc06c4835a61e344
+- name: redis_sentinel_exporter
+  version: 4f91afdee17d28775f767a309a0f68385cae85be
+  fingerprint: 4f91afdee17d28775f767a309a0f68385cae85be
+  sha1: dd8a4c943a152262f3963ad884957f7e7bd5b67c
+packages:
+- name: mongodb_exporter
+  version: 4ad08fce0b4dca98a543625dfcc187874e0bb9f0
+  fingerprint: 4ad08fce0b4dca98a543625dfcc187874e0bb9f0
+  sha1: 6d69864d65c768cb3563bc2b6b84c850837cb46c
+  dependencies: []
+- name: redis_exporter
+  version: 4c28b73125561a4fd23de1ed23e9bb03e3cc8e45
+  fingerprint: 4c28b73125561a4fd23de1ed23e9bb03e3cc8e45
+  sha1: 22db4109c5c9aedbc35b96908894bad82f2a10f8
+  dependencies: []
+- name: redis_sentinel_exporter
+  version: 1ed2daa94997079cac92806113edd4fcd6a97558
+  fingerprint: 1ed2daa94997079cac92806113edd4fcd6a97558
+  sha1: 071c1d2806a710964a4659775038677046b59df8
+  dependencies: []
+license:
+  version: 0fbc9511a7e7f3a4d2f1af47f5ed327237b5f06c
+  fingerprint: 0fbc9511a7e7f3a4d2f1af47f5ed327237b5f06c
+  sha1: abb80d4b9ff47112a649cb9125be9a2b4c4da84e
