@@ -1,5 +1,5 @@
 ---
-name: arbbitmq_dashboards
+name: rabbitmq_dashboards
 
 packages: []
 
