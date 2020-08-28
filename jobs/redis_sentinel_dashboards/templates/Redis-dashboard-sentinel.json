@@ -53,7 +53,7 @@
   "gnetId": 9570,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1580736611999,
+  "iteration": 1598607661953,
   "links": [],
   "panels": [
     {
@@ -630,10 +630,7 @@
   ],
   "schemaVersion": 21,
   "style": "dark",
-  "tags": [
-    "WIP",
-    "Prometheus"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
@@ -684,14 +681,14 @@
         "allValue": null,
         "current": {},
         "datasource": "${DS_PROMETHEUS}",
-        "definition": "label_values(redis_sentinel_info,instance)",
+        "definition": "label_values(redis_sentinel_master_sentinels{name=~\"$bosh_deployment\"}, instance)",
         "hide": 0,
         "includeAll": false,
         "label": "",
         "multi": false,
         "name": "node",
         "options": [],
-        "query": "label_values(redis_sentinel_info,instance)",
+        "query": "label_values(redis_sentinel_master_sentinels{name=~\"$bosh_deployment\"}, instance)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -706,14 +703,14 @@
         "allValue": null,
         "current": {},
         "datasource": "${DS_PROMETHEUS}",
-        "definition": "",
+        "definition": "label_values(redis_sentinel_master_sentinels{name=~\"$bosh_deployment\"},  address)",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "master_address",
         "options": [],
-        "query": "label_values(redis_sentinel_master_sentinels, address)",
+        "query": "label_values(redis_sentinel_master_sentinels{name=~\"$bosh_deployment\"},  address)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -756,7 +753,7 @@
     ]
   },
   "timezone": "",
-  "title": "Redis Sentinel",
-  "uid": "j7ps9v5iz",
+  "title": "Redis Sentinel Copy2",
+  "uid": "1mduC9HGz",
   "version": 4
 }
