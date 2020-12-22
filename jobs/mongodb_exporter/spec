@@ -30,6 +30,9 @@ properties:
     description: "Collect MongoDB indexusage metrics"
   mongodb.bin_path:
     description: "Where mongoDB binaries are on the deployment"
+  mongodb.clustermonitor.create:
+    description: "Auto create the clustermonitor user"
+    default: true
   mongodb.clustermonitor.username:
     description: "User used for mongodb exporter"
   mongodb.clustermonitor.password:
