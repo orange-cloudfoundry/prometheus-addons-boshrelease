@@ -22,8 +22,10 @@ case $1 in
     echo $$ > ${PIDFILE}
 
     # create clustermonitor user
-    JOB_DIR=/var/vcap/jobs/mongodb_exporter
-    source ${JOB_DIR}/bin/create_clustermonitor_user.sh
+    <%- if p('mongodb.clustermonitor.create') == true -%>
+      JOB_DIR=/var/vcap/jobs/mongodb_exporter
+      source ${JOB_DIR}/bin/create_clustermonitor_user.sh
+    <%- end -%>
 
     # export MONGODB_URL="<%= p('mongodb.uri') %>"
 
