@@ -12,7 +12,7 @@ This is a bosh release providing the following tools from
 
   *source: https://github.com/percona/grafana-dashboards*
 
-* mongodb_exporter (**v0.7.0**) :
+* mongodb_exporter (**v0.20.1**) :
 
   A MongoDB exporter for [prometheus](https://prometheus.io/)
 
@@ -33,9 +33,9 @@ The release is actually focused on [mongodb](https://www.mongodb.com), but is st
 * get and upload the last release from github
 
   ```shell
-  wget https://github.com/jraverdy-orange/prometheus-addons-boshrelease/releases/download/v2.1.1/prometheus-addons-v2.1.1.tgz
+  wget https://github.com/jraverdy-orange/prometheus-addons-boshrelease/releases/download/v2.1.1/prometheus-addons-v3.1.1.tgz
   
-  bosh upload-release prometheus-addons-v2.1.1.tgz
+  bosh upload-release prometheus-addons-v3.1.1.tgz
   ```
 
   

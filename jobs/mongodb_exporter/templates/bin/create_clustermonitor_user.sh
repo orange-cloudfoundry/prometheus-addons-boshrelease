@@ -60,8 +60,8 @@ MONGO_CMD="mongo"
 MONGO_CMD="<%= bin_path %>/mongo"
 <%- end %>
 
-<%- if p('mongodb.tls') == true -%>
-MONGO_CMD="$MONGO_CMD --ssl --sslCAFile <%= p('mongodb.tls_ca') %> --quiet"
+<%- if p('mongodb.clustermonitor.tls') == true -%>
+MONGO_CMD="$MONGO_CMD --ssl --sslCAFile <%= p('mongodb.clustermonitor.tls_ca') %> --quiet"
 CONNECT_STRING="mongodb://<%= p('mongodb.root.username') %>:<%= p('mongodb.root.password') %>@127.0.0.1:${PORT}/admin?authSource=admin&ssl=true"
 <%- else -%>
 MONGO_CMD="$MONGO_CMD --quiet"
