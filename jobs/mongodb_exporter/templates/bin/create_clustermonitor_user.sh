@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eu
 
+# create file content only when clustermonitor user should be created
+<%- if p('mongodb.clustermonitor.create') == true -%>
+
 <%-
   require "shellwords"
 
@@ -113,3 +116,5 @@ if [ "${Master}" == "<%= esc(current_ip) %>" ]
 then
     ${MONGO_CMD} ${CONNECT_STRING} $JOB_DIR/js/create_clustermonitor_user.js
 fi
+
+<%- end -%>
