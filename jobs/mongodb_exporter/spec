@@ -18,39 +18,42 @@ provides:
     type: mongodb_exporter
 
 properties:
-  groups_enabled:
-    description: "Comma-separated list of groups to use, for more info see: docs.mongodb.org/manual/reference/command/serverStatus/"
-  collect_database:
-    description: "Collect MongoDB database metrics"
-  collect_collection:
-    description: "Collect MongoDB database metrics"
-  collect_topmetrics:
-    description: "Collect MongoDB topmetrics metrics"
-  collect_indexusage:
-    description: "Collect MongoDB indexusage metrics"
+  collstats_colls:
+    description: "List of comma separared databases.collections to get $collStats, example: db1.col1,db2.col2 "
+  indexstats_colls:
+    description: "List of comma separared databases.collections to get $indexStats, example: db1.col1,db2.col2"
+  global_conn_pool:
+    description: "Use global connection pool instead of creating new pool for each http request."
+    default: false
+  log_level:
+    description: "Only log messages with the given severuty or above. Valid levels: [debug, info, warn, error, fatal]"
+    default: error
+  disable_diagnosticdata:
+    description: "Disable collecting metrics from getDiagnosticData"
+    default: false
+  disable_replicasetstatus:
+    description: "Disable collecting metrics from replSetGetStatus"
+    default: false
+  compatible_mode:
+    description: "Enable old mongodb-exporter compatible metrics"
+    default: false
   mongodb.bin_path:
     description: "Where mongoDB binaries are on the deployment"
   mongodb.clustermonitor.username:
     description: "User used for mongodb exporter"
   mongodb.clustermonitor.password:
     description: "Password used for mongodb exporter" 
+  mongodb.clustermonitor.tls:
+    description: "Enable tls connection with mongo server"
+    default: false
+  mongodb.clustermonitor.tls_ca:
+    description: "MongoDB SSL CA (PEM encoded)"
   mongodb.root.username:
     description: ""
   mongodb.root.password:
     description: ""  
   mongodb.uri:
-    description: "Mongodb URI, format: [mongodb://][user:pass@]host1[:port1][,host2[:port2],...][/database][?options]"
-  mongodb.tls:
-    description: "Enable tls connection with mongo server"
-    default: false
-  mongodb.tls_ca:
-    description: "MongoDB SSL CA (PEM encoded)"
-  mongodb.tls_cert:
-    description: "MongoDB SSL Certificate (PEM encoded)"
-  mongodb.tls_private_key:
-    description: "MongoDB SSL Private Key (PEM encoded)"
-  mongodb.tls_disable_hostname_validation:
-    description: "Do hostname validation for server connection"
+    description: "MongoDB connection URI to a single host, example: mongodb://user:pass@127.0.0.1:27017/admin?ssl=true"
   web.port:
     description: "Port on which to expose metrics and web interface"
     default: 9001

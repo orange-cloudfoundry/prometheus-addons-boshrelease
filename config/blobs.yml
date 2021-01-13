@@ -1,6 +1,6 @@
-percona-mongodb-exporter/percona-mongodb-exporter-0.11.1.tar.gz:
-  size: 9636885
-  sha: 298eee76ed9440cf01649b871bbe08597e1c8767
+percona-mongodb-exporter/percona-mongodb-exporter-0.20.1.tar.gz:
+  size: 5917573
+  sha: 2496a381815ba7c3398426d021be4f0c828e4516
 redis-exporter/redis_exporter-v1.3.5.linux-amd64.tar.gz:
   size: 3376514
   object_id: 56a0064d-b7fa-421e-49e8-cb8b54da854c
